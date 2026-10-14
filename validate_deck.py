@@ -219,7 +219,8 @@ def resolve_world(explicit: str | None = None) -> tuple[World, str]:
         return World.load(p), f"--world {p}"
 
     kit_world_dir = _REPO_ROOT / "kit" / "world" / "data"
-    for candidate in (kit_world_dir, _REPO_ROOT / "kit" / "world"):
+    candidates = [kit_world_dir, _REPO_ROOT / "kit" / "world"]
+    for candidate in candidates:
         manifest = candidate / "manifest.json"
         if manifest.is_file():
             try:
